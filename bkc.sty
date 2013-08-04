@@ -1,0 +1,276 @@
+%% bkc.sty (The personal TeX style of bkc39)
+%%
+%% version 3
+%% Aug 3, 2013
+
+\ProvidesPackage{bkc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PAGE PROPERTIES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in]{geometry}
+\usepackage{relsize}
+\usepackage{parskip}
+
+% name to be used at the left of each page header
+\def\@name{Ben Carriel} % default set to Yours Truly
+\newcommand{\setname}[1]{\def\@name{#1}}
+\newcommand{\show@name}{\@name}
+
+% sets assignment title
+\def\@assn{}
+\newcommand{\setassn}[1]{\def\@assn{#1}}
+\newcommand{\show@assn}{\@assn}
+
+% sets the default date
+\def\@date{\today} % defaults to current date
+\newcommand{\setdate}[1]{\def\@date{#1}}
+\newcommand{\show@date}{\@date}
+
+% header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\show@name}
+\chead{\show@assn}
+\rhead{\show@date}
+
+\headheight 13.0pt
+\parskip 7.2pt
+\parindent 1cm
+
+% Font
+\renewcommand*{\familydefault}{\sfdefault} % sans-serif; delete to make serif
+
+%% Enable graphics
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+\newcommand{\tab}{\hspace*{2em}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MATH MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% TODO:
+%  - draw common shapes in tikz?
+%  - common special functions: bessel, gamma, zeta, hypergeometric, ...
+%  - macros for common categories Ab,Grp,Top,Rng,CmpHaus, ...
+%  - tikzcd shortcut for the usual commutative triangle
+
+%% Standard AMS packages
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs} % for mathscr font. Munkres style
+
+%% Commonly used sets
+\DeclareMathOperator{\N}{\ensuremath{\mathbb{N}}}
+\DeclareMathOperator{\Z}{\ensuremath{\mathbb{Z}}}
+\DeclareMathOperator{\Q}{\ensuremath{\mathbb{Q}}}
+\DeclareMathOperator{\R}{\ensuremath{\mathbb{R}}}
+\DeclareMathOperator{\C}{\ensuremath{\mathbb{C}}}
+\DeclareMathOperator{\Hu}{\ensuremath{\mathbb{H}}}
+\DeclareMathOperator{\Oc}{\ensuremath{\mathbb{O}}}
+\DeclareMathOperator{\F}{\ensuremath{\mathbb{F}}}
+\DeclareMathOperator{\D}{\ensuremath{\mathbb{D}}}
+\DeclareMathOperator{\T}{\ensuremath{\mathbb{T}}}
+
+%% For declaring sets
+\DeclareMathOperator{\suchthat}{\mathrel{:}} % some people like \vert better
+\newcommand{\defset}[2]{\left\{#1 \suchthat #2\right\}}
+
+%% Function notation
+\DeclareMathOperator{\into}{\hookrightarrow}
+\DeclareMathOperator{\onto}{\twoheadrightarrow}
+\DeclareMathOperator{\bij}{\leftrightarrow}
+\newcommand{\of}{\circ}
+
+%% Some arrow shortcuts
+\DeclareMathOperator{\ua}{\uparrow}
+\DeclareMathOperator{\da}{\downarrow}
+\DeclareMathOperator{\la}{\leftarrow}
+\DeclareMathOperator{\lla}{\longleftarrow}
+\DeclareMathOperator{\lra}{\longrightarrow}
+
+%% Logic
+\usepackage{xspace}
+\newenvironment{logic}
+   {\renewcommand{\and}{\ensuremath{\land}}
+    \renewcommand{\or}{\ensuremath{\lor}}
+    \renewcommand{\not}{\ensuremath{\lnot}}}
+   {}
+\renewcommand{\implies}{\ensuremath{\mathrel{\Rightarrow}}}
+\renewcommand{\iff}{\ensuremath{\mathrel{\Leftrightarrow}}}
+
+%% Number Theory
+\DeclareMathOperator{\divides}{\ensuremath{\mathrel{\mid}}}
+\DeclareMathOperator{\ndivides}{\ensuremath{\mathrel{\nmid}}}
+\newcommand{\ceil}[1]{\left\lceil #1\right\rceil}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\leg}[2]{\left(#1\mid #2\right)} % Legendre symbol
+
+%% Analysis Macros
+\newcommand{\sder}[2]{\frac{d #1}{d #2}}
+\newcommand{\der}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\lpnorm}[2]{\|#1\|_{L^{#2}}}
+\newcommand{\diam}[1]{\text{diam}(#1)}
+\newcommand{\seq}[2]{\{#1_{#2}\}_{#2 = 1}^\infty}
+\DeclareMathOperator{\lap}{\bigtriangleup} % the laplacian symbol
+% For the Characteristic function of a set. A capital Chi.
+\DeclareMathOperator{\capchi}{\raisebox{2pt}
+  {$\mathlarger{\mathlarger{\chi}}$}}
+
+%% Complex Analysis
+\newcommand{\real}{\mathrel{\text{Re}}}
+\newcommand{\imag}{\mathrel{\text{Im}}}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\cis}[1]{\operatorname{cis}#1}
+\newcommand{\res}{\operatorname{res}}
+
+%% Algebra
+\DeclareMathOperator{\free}{\raisebox{-2pt}{\scalebox{2.5}{$\ast$}}}
+\DeclareMathOperator{\normal}{\unlhd}
+\DeclareMathOperator{\im}{\text{im}}
+\DeclareMathOperator{\coim}{\text{coim}}
+\DeclareMathOperator{\coker}{\text{coker}}
+\newcommand{\cat}[1]{\textbf{#1}}
+\newcommand{\aut}[1]{\text{Aut}(#1)}
+\newcommand{\gal}[1]{\text{Gal}(#1)}
+
+%% Theorem environments. Lose auto-numbering for problem sets.
+\newtheorem*{thm}{\\ Theorem}
+\newtheorem*{lem}{\\ Lemma}
+\newtheorem*{claim}{\\ Claim}
+\newtheorem*{defn}{\\ Definition}
+\newtheorem*{prop}{\\ Proposition}
+
+%% Enable tikz
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usetikzlibrary{arrows}
+\usetikzlibrary{fit}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{shadows}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usetikzlibrary{trees}
+
+\usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CS MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% For algorithms
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+\newcommand{\np}{\text{NP}}
+\newcommand{\npc}{\text{NP-complete}}
+\renewcommand{\sc}[1]{\textsc{#1}}
+
+%% For Typesetting OCaml
+\usepackage{alltt}
+\usepackage{listings}
+\usepackage{pxfonts}
+\usepackage[T1]{fontenc}
+\usepackage{esint} % math compatibility with pxfonts
+
+\lstnewenvironment{ocaml}{
+  \lstset{
+    language=[Objective] Caml,
+    basicstyle=\small\ttfamily,
+    keywordstyle=\bfseries,
+    breaklines=true,
+    morekeywords={raise}
+  }
+}{}
+
+\newcommand{\caml}{
+  \lstinline[
+    language=[Objective] Caml,
+    basicstyle=\small\ttfamily,
+    morekeywords={raise}]
+  }
+
+%% generic inline code, argument is the language
+\newcommand{\code}[1]{\lstinline[language=#1,basicstyle=\ttfamily]}
+
+%% PL stuff
+\usepackage{proof}
+
+\newcommand{\bnf}{\ensuremath{\ \ | \ \ }}
+\newcommand{\sep}{\bnf}
+\newcommand\sqleq{\ensuremath\sqsubseteq}
+
+% Language Constructs
+\newcommand\impfnt[1]{\mbox{\bf #1}}
+\newcommand{\IF}{\impfnt{if}}
+\newcommand{\THEN}{\impfnt{then}}
+\newcommand{\ELSE}{\impfnt{else}}
+\newcommand{\SKIP}{\impfnt{skip}}
+\newcommand{\WHILE}{\impfnt{while}}
+\newcommand{\DO}{\impfnt{do}}
+\newcommand{\BREAK}{\impfnt{break}}
+\newcommand{\UNTIL}{\impfnt{until}}
+\newcommand{\TRUE}{\impfnt{true}}
+\newcommand{\FALSE}{\impfnt{false}}
+\newcommand{\FOR}{\impfnt{for}}
+\newcommand{\TO}{\impfnt{to}}
+\newcommand{\cond}[3]{\ensuremath{\IF \: #1 \:\THEN\: #2 \:\ELSE\: #3}}
+\newcommand{\while}[2]{\ensuremath{\WHILE \: #1 \:\DO\: #2}}
+
+% Type Constructs 
+\newcommand\lam[2]{\lambda#1.\,#2}
+\newcommand\Lam[2]{\Lambda#1.\,#2}
+\DeclareMathOperator{\arrow}{\rightarrow}
+\DeclareMathOperator{\ty}{\!:\!}
+\DeclareMathOperator{\proves}{\vdash}
+
+% Operational Semantics
+\newcommand{\config}[2]{\ensuremath{\langle #1,\, #2 \rangle}}
+\newcommand{\configB}[4]{\ensuremath{\langle #1,\, #2,\, #3,\, #4 \rangle}}
+\newcommand{\stepsto}{\Downarrow}
+\newcommand{\stepsone}{\longrightarrow}
+\newcommand\sub[1]{_{\mbox{\scriptsize #1}}}
+\newcommand\subst[3]{{\ensuremath #1\{#2/#3\}}}
+\newcommand\definedas{\stackrel{\triangle}{=}}
+\newcommand\translatesto{\;\;\longmapsto\;\;}
+\newcommand\fn{\ensuremath\lambda}
+\newcommand{\Rule}[2]{\infer{#2}{#1}}
+\newcommand{\RuleSide}[3]{\infer[#3]{#2}{#1}}
+
+% Denotational Semantics
+\newcommand\join{\ensuremath\bigsqcup}
+\newcommand\lift[1]{\ensuremath{\lfloor #1 \rfloor}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM SET MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%Redefining sections as problems
+%
+\makeatletter
+\newenvironment{problem}{ \@startsection {section} {1}
+  {-.2em} {-3.5ex plus -1ex minus -.2ex} {2.3ex plus .2ex}
+  {\pagebreak[3]%forces pagebreak when space is small; use \eject
+               %for better results
+    \large\bf\noindent{Problem } \vspace{-1.5ex}} }
+% vspace and center dividing line option -- CURRENTLY AFTER SOLUTION
+{%\vspace{-2ex}\begin{center} \rule{0.3\linewidth}{.3pt}\end{center}}
+}
+\makeatother
+
+\newenvironment{subproblems}{\enumerate}{\endenumerate}
+\newenvironment{subproblem}{\item}{}
+
+\makeatletter
+\newenvironment{solution}
+{\let\oldqedsymbol=\qedsymbol%
+  \def\@addpunct##1{}%
+  \begin{proof}[\bfseries\upshape Solution]}%
+  {\end{proof}%
+  \renewcommand{\qedsymbol}{\oldqedsymbol}
+  \vspace{-2ex}\begin{center} \rule{0.3\linewidth}{.3pt}\end{center}
+}
+\makeatother
+
+%%
+%% End of file 'bkc.sty'.
