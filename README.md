@@ -22,8 +22,8 @@ To install <code>maketex.sh</code> on a Mac just move it into your
 bin.  <pre><code>$ cp path-to-repository/maketex.sh /usr/local/bin
 </code></pre> On a Linux machine, you will have to slightly modify the
 script. On line 30 of <code>maketex.sh</code> replace the line
-<pre><code>$ open $1.pdf</code></pre> with <pre><code> $ application-name
-$1.pdf</code></pre>
+<pre><code>$ open $1.pdf</code></pre> with
+<pre><code> $application-name $1.pdf</code></pre>
 
 To install the <code>.sty</code> and <code>.cls</code> files on Mac
 <pre><code>$ cp *.sty *.cls ~/Library/texmf/tex/latex/ </code></pre>
