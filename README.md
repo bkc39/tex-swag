@@ -23,7 +23,9 @@ bin.  <pre><code>$ cp path-to-repository/maketex.sh /usr/local/bin
 </code></pre> On a Linux machine, you will have to slightly modify the
 script. On line 30 of <code>maketex.sh</code> replace the line
 <pre><code>$ open $1.pdf</code></pre> with
-<pre><code> $application-name $1.pdf</code></pre>
+<pre><code> $ application-name $1.pdf</code></pre> Where
+<code>application-name</code> is the application you want to use for viewing
+<code>.pdf</code> files.
 
 To install the <code>.sty</code> and <code>.cls</code> files on Mac
 <pre><code>$ cp *.sty *.cls ~/Library/texmf/tex/latex/ </code></pre>
@@ -38,8 +40,10 @@ will have to create it. In Linux or Windows you will want to run
 Usage
 =====
 
-Usage of <code>maketex.sh</code> is straightforward. At the command line type
-<pre><code> $ maketex <filename> </code></pre>
+Usage of <code>maketex.sh</code> is straightforward. At the command
+line type <pre><code> $ maketex filename </code></pre> To build a
+file named <code>myfile.tex</code> you would run
+<pre><code>$ maketex myfile</code></pre>
 Note that you **do not** include the <code>.tex</code> file extension.
 
 The main <code>.sty</code> file is <code>bkc.sty</code>. To use in a
