@@ -35,10 +35,10 @@ will have to create it. In Linux or Windows you will want to run
     $ export TEXDIR=`kpsewhich -var-value=TEXMFHOME`
     $ cp *.sty *.cls $TEXDIR
     $ texhash
-</code></pre> You may need root access to run the <code>texhash</code> command.
+</code></pre>
+You may need root access to run the <code>texhash</code> command.
 
-Usage
-=====
+# Usage
 
 Usage of <code>maketex.sh</code> is straightforward. At the command
 line type <pre><code> $ maketex filename </code></pre> To build a
