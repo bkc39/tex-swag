@@ -22,8 +22,8 @@ To install <code>maketex.sh</code> on a Mac just move it into your
 bin.  <pre><code>$ cp path-to-repository/maketex.sh /usr/local/bin
 </code></pre> On a Linux machine, you will have to slightly modify the
 script. On line 30 of <code>maketex.sh</code> replace the line
-<pre><code>$ open $1.pdf</code></pre> with
-<pre><code> $ application-name $1.pdf</code></pre> Where
+<pre><code>open $1.pdf</code></pre> with
+<pre><code>application-name $1.pdf</code></pre> Where
 <code>application-name</code> is the application you want to use for viewing
 <code>.pdf</code> files.
 
@@ -57,7 +57,7 @@ TeX document just import the package via
     ...
     \end{document}
 </code></pre>
-I'll in depth review of the provided macros soon when I have time.
+I'll post an in depth review of the provided macros soon when I have time.
 
 Contributors
 ============
