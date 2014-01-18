@@ -5,43 +5,35 @@
 
 \ProvidesPackage{bkc}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PAGE PROPERTIES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Package Imports %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in]{geometry}
-\usepackage{relsize}
-\usepackage{parskip}
+%% Standard AMS packages
+\RequirePackage{amsfonts}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{mathrsfs} % for mathscr font. Munkres style
 
-% name to be used at the left of each page header
-\def\@name{Ben Carriel} % default set to Yours Truly
-\newcommand{\setname}[1]{\def\@name{#1}}
-\newcommand{\show@name}{\@name}
+%% For TikZ
+\RequirePackage{xspace}
+\RequirePackage{tikz}
+\RequirePackage{tikz-cd}
 
-% sets assignment title
-\def\@assn{}
-\newcommand{\setassn}[1]{\def\@assn{#1}}
-\newcommand{\show@assn}{\@assn}
+%% For algorithms
+\RequirePackage{algorithm}
+\RequirePackage{algorithmicx}
+\RequirePackage{algpseudocode}
 
-% sets the default date
-\def\@date{\today} % defaults to current date
-\newcommand{\setdate}[1]{\def\@date{#1}}
-\newcommand{\show@date}{\@date}
+%% For code
+\RequirePackage{alltt}
+\RequirePackage{listings}
+\RequirePackage{pxfonts}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{esint} % math compatibility with pxfonts
 
-% header
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\lhead{\show@name}
-\chead{\show@assn}
-\rhead{\show@date}
+%% For PL typesetting
+\RequirePackage{proof}
 
-\headheight 13.0pt
-\parskip 7.2pt
-\parindent 1cm
-
-% Font
-\renewcommand*{\familydefault}{\sfdefault} % sans-serif; delete to make serif
-
-%% Enable graphics
-\usepackage{graphicx}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 \newcommand{\tab}{\hspace*{2em}}
@@ -54,24 +46,17 @@
 %  - macros for common categories Ab,Grp,Top,Rng,CmpHaus, ...
 %  - tikzcd shortcut for the usual commutative triangle
 
-%% Standard AMS packages
-\usepackage{amsfonts}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{mathrsfs} % for mathscr font. Munkres style
-
 %% Commonly used sets
 \DeclareMathOperator{\N}{\ensuremath{\mathbb{N}}}
 \DeclareMathOperator{\Z}{\ensuremath{\mathbb{Z}}}
 \DeclareMathOperator{\Q}{\ensuremath{\mathbb{Q}}}
 \DeclareMathOperator{\R}{\ensuremath{\mathbb{R}}}
-\DeclareMathOperator{\C}{\ensuremath{\mathbb{C}}}
 \DeclareMathOperator{\Hu}{\ensuremath{\mathbb{H}}}
 \DeclareMathOperator{\Oc}{\ensuremath{\mathbb{O}}}
 \DeclareMathOperator{\F}{\ensuremath{\mathbb{F}}}
 \DeclareMathOperator{\D}{\ensuremath{\mathbb{D}}}
 \DeclareMathOperator{\T}{\ensuremath{\mathbb{T}}}
+\renewcommand{\C}{\ensuremath{\mathbb{C}}}
 
 %% For declaring sets
 \DeclareMathOperator{\suchthat}{\mathrel{:}} % some people like \vert better
@@ -91,7 +76,6 @@
 \DeclareMathOperator{\lra}{\longrightarrow}
 
 %% Logic
-\usepackage{xspace}
 \newenvironment{logic}
    {\renewcommand{\and}{\ensuremath{\land}}
     \renewcommand{\or}{\ensuremath{\lor}}
@@ -143,8 +127,7 @@
 \newtheorem*{defn}{\\ Definition}
 \newtheorem*{prop}{\\ Proposition}
 
-%% Enable tikz
-\usepackage{tikz}
+%% For TikZ 
 \usetikzlibrary{shapes}
 \usetikzlibrary{arrows}
 \usetikzlibrary{fit}
@@ -154,26 +137,14 @@
 \usetikzlibrary{calc}
 \usetikzlibrary{trees}
 
-\usepackage{tikz-cd}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CS MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% For algorithms
-\usepackage{algorithm}
-\usepackage{algorithmicx}
-\usepackage{algpseudocode}
-
+%% NP-completeness stuff
 \newcommand{\np}{\text{NP}}
 \newcommand{\npc}{\text{NP-complete}}
 \renewcommand{\sc}[1]{\textsc{#1}}
 
 %% For Typesetting OCaml
-\usepackage{alltt}
-\usepackage{listings}
-\usepackage{pxfonts}
-\usepackage[T1]{fontenc}
-\usepackage{esint} % math compatibility with pxfonts
-
 \lstnewenvironment{ocaml}{
   \lstset{
     language=[Objective] Caml,
@@ -195,8 +166,6 @@
 \newcommand{\code}[1]{\lstinline[language=#1,basicstyle=\ttfamily]}
 
 %% PL stuff
-\usepackage{proof}
-
 \newcommand{\bnf}{\ensuremath{\ \ | \ \ }}
 \newcommand{\sep}{\bnf}
 \newcommand\sqleq{\ensuremath\sqsubseteq}
@@ -241,36 +210,6 @@
 % Denotational Semantics
 \newcommand\join{\ensuremath\bigsqcup}
 \newcommand\lift[1]{\ensuremath{\lfloor #1 \rfloor}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM SET MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%
-%Redefining sections as problems
-%
-\makeatletter
-\newenvironment{problem}{ \@startsection {section} {1}
-  {-.2em} {-3.5ex plus -1ex minus -.2ex} {2.3ex plus .2ex}
-  {\pagebreak[3]%forces pagebreak when space is small; use \eject
-               %for better results
-    \large\bf\noindent{Problem } \vspace{-1.5ex}} }
-% vspace and center dividing line option -- CURRENTLY AFTER SOLUTION
-{%\vspace{-2ex}\begin{center} \rule{0.3\linewidth}{.3pt}\end{center}}
-}
-\makeatother
-
-\newenvironment{subproblems}{\enumerate}{\endenumerate}
-\newenvironment{subproblem}{\item}{}
-
-\makeatletter
-\newenvironment{solution}
-{\let\oldqedsymbol=\qedsymbol%
-  \def\@addpunct##1{}%
-  \begin{proof}[\bfseries\upshape Solution]}%
-  {\end{proof}%
-  \renewcommand{\qedsymbol}{\oldqedsymbol}
-  \vspace{-2ex}\begin{center} \rule{0.3\linewidth}{.3pt}\end{center}
-}
-\makeatother
 
 %%
 %% End of file 'bkc.sty'.

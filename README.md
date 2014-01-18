@@ -33,7 +33,7 @@ If the directory <code>~/Library/texmf/</code> does not exist, you
 will have to create it. In Linux or Windows you will want to run
 <pre><code>
     $ export TEXDIR=`kpsewhich -var-value=TEXMFHOME`
-    $ cp *.sty *.cls $TEXDIR
+    $ cp *.sty *.cls $TEXDIR 
     $ texhash
 </code></pre>
 You may need root access to run the <code>texhash</code> command.
