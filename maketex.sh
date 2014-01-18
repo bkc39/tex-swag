@@ -13,10 +13,8 @@ if [ -f $1.tex ]
 then
 # if it exists then latex it twice, dvips, then ps2pdf,
 # then remove all the unneeded files
-latex $1.tex
-latex $1.tex
-dvips $1.dvi -o $1.ps
-ps2pdf $1.ps
+xelatex $1.tex
+xelatex $1.tex
 
 # these lines can be appended to delete other files, such as *.out
 rm *.aux
@@ -30,6 +28,6 @@ rm *.lof
 open $1.pdf
 else
 # otherwise give this output line with a list of available tex files
-echo the file doesnt exist butthead! Choose one of these:
+echo the file doesnt exist! Choose one of these:
 ls *.tex
 fi
