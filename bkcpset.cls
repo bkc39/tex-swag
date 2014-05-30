@@ -48,7 +48,7 @@
 \parindent 1cm
 
 % Font
-\renewcommand*{\familydefault}{\sfdefault} % sans-serif; delete to make serif
+% \renewcommand*{\familydefault}{\sfdefault} % sans-serif; delete to make serif
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -68,6 +68,19 @@
 
 \newenvironment{subproblems}{\enumerate}{\endenumerate}
 \newenvironment{subproblem}{\item}{}
+
+%
+% Aliasing exercises to sections
+\makeatletter
+\newenvironment{exercise}{ \@startsection {section} {1}
+  {-.2em} {-3.5ex plus -1ex minus -.2ex} {2.3ex plus .2ex}
+  {\pagebreak[3]%forces pagebreak when space is small; use \eject
+               %for better results
+    \large\bf\noindent{Exercise } \vspace{-1.5ex}} }
+% vspace and center dividing line option -- CURRENTLY AFTER SOLUTION
+{%\vspace{-2ex}\begin{center} \rule{0.3\linewidth}{.3pt}\end{center}}
+}
+\makeatother
 
 \makeatletter
 \newenvironment{solution}
