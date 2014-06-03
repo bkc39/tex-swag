@@ -64,7 +64,7 @@
 \DeclareMathOperator{\F}{\ensuremath{\mathbf{F}}}
 \DeclareMathOperator{\D}{\ensuremath{\mathbf{D}}}
 \DeclareMathOperator{\T}{\ensuremath{\mathbf{T}}}
-\renewcommand{\C}{\ensuremath{\mathbf{C}}}
+\DeclareMathOperator{\C}{\ensuremath{\mathbf{C}}}
 
 %% For declaring sets
 \DeclareMathOperator{\suchthat}{\mathrel{:}} % some people like \vert better
@@ -129,12 +129,25 @@
 \newcommand{\aut}[1]{\text{Aut}(#1)}
 \newcommand{\gal}[1]{\text{Gal}(#1)}
 
+%% Vector Calculus
+\newcommand{\normalvec}{\ensuremath{\vec{n}}}
+\newcommand{\grad}{\ensuremath{\nabla}}
+\newcommand{\divv}{\ensuremath{\nabla \cdot}}
+\DeclareMathOperator{\curl}{\text{curl}}
+
 %% Theorem environments. Lose auto-numbering for problem sets.
 \newtheorem*{thm}{\\ Theorem}
 \newtheorem*{lem}{\\ Lemma}
 \newtheorem*{claim}{\\ Claim}
 \newtheorem*{defn}{\\ Definition}
 \newtheorem*{prop}{\\ Proposition}
+
+%% Theorem environments with auto-numbering for notes
+\newtheorem{nthm}{Theorem}
+\newtheorem{nlem}{Lemma}
+\newtheorem{nclaim}{Claim}
+\newtheorem{ndefn}{Definition}
+\newtheorem{nprop}{Proposition}
 
 %% For TikZ 
 \usetikzlibrary{shapes}
