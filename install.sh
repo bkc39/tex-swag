@@ -5,6 +5,6 @@
 ## May 30, 2014
 ## bkc
 
-TEXDIR=`kpsewhich -var-value=TEXMFHOME`
+TEXDIR=`kpsewhich -var-value=TEXMFHOME`/tex/latex
 cp *.sty *.cls $TEXDIR
 texhash
